@@ -31,7 +31,6 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import TSNE
 from sklearn.cluster import MiniBatchKMeans
 
-import pyLDAvis
 
 # ==========================================================================
 # LOAD FILE HERE
@@ -437,43 +436,6 @@ hover.tooltips={"description":"@description",
 show(plot_lda)
 
 
-# ===========================================================
-def prepareLDAData():
-    data = {
-        'vocab': vocab,
-        'doc_topic_dists': doc_topic,
-        'doc_lengths': list(lda_df['len_docs']),
-        'term_frequency':cvectorizer.vocabulary_,
-        'topic_term_dists': lda_model.components_
-    } 
-    return data
-
-import pyLDAvis
-
-lda_df['len_docs'] = sample_combined['tokens'].map(len)
-ldadata = prepareLDAData()
-pyLDAvis.enable_notebook()
-prepared_data = pyLDAvis.prepare(**ldadata)
-
-import IPython.display
-from IPython.core.display import display, HTML, Javascript
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-train.shape
-
-train.head()
 
 
 
